@@ -1,0 +1,14 @@
+drag-scroll {
+    height: 380px;
+    width: 100%;
+  }
+  app-product-item{
+      width: 100%;
+      height: 380px;
+  }
+
+  .aa-product-catg {
+    margin-left: -54px;
+    width: 100%;
+    height: 380px;
+  }

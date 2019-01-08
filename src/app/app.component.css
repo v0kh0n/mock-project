@@ -1,0 +1,16 @@
+#aa-banner {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  #aa-banner .aa-banner-area {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  #aa-banner .aa-banner-area a {
+    display: block;
+  }
+  #aa-banner .aa-banner-area a img {
+    max-width: 100%;
+  }
