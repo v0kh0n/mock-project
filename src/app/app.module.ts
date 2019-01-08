@@ -9,6 +9,7 @@ import { PopularCategoryComponent } from './popular-category/popular-category.co
 import { ProductItemComponent } from './product-item/product-item.component';
 import { TestComponent } from './test/test.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     ProductQuickViewComponent,
     PopularCategoryComponent,
     ProductItemComponent,
-    TestComponent
+    TestComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
