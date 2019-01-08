@@ -88,6 +88,7 @@
     transition: all 0.5s;
   }
   .item .aa-product-price {
+    color: #ff6666;
     font-weight: bold;
     letter-spacing: 0.5px;
     font-size: 16px;
@@ -118,6 +119,9 @@
     display: inline-block;
     margin: 0 5px;
     padding: 5px 10px;
+  }
+  .aa-product-hvr-content a:hover, .aa-product-hvr-content a:focus{
+    color: #ff6666;
   }
   .item .aa-badge {
     position: absolute;

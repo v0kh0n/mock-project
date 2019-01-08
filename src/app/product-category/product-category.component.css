@@ -35,6 +35,15 @@
     text-align: center;
     padding-bottom: 35px;
   }
+
+
+  .aa-products-tab li a:hover, .aa-products-tab li a:focus {
+    border-bottom: 1px solid #ff6666;
+  }
+
+  .aa-products-tab .active{
+    border-bottom: 1px solid #ff6666;
+  }
   
   .aa-product-nav {
     display: inline-block;
@@ -111,6 +120,16 @@
     margin: 0 2% 0 2%;
     display: block;
     float: left;
+  }
+
+
+  .aa-browse-btn {
+    background-color: #ff6666;  
+    border: 1px solid #ff6666;  
+  }
+  .aa-browse-btn:hover, .aa-browse-btn:focus {
+    background-color: #fff;  
+    color: #ff6666;
   }
   
   
