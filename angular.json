@@ -29,7 +29,7 @@
               "src/css/jquery.simpleLens.css",
               "src/css/slick.css",
               "src/css/nouislider.css",
-              // "src/css/theme-color/default-theme.css",
+              "src/css/theme-color/default-theme.css",
               "src/css/sequence-theme.modern-slide-in.css",
               // "src/css/style.css"
               "src/styles.css"
