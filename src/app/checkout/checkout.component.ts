@@ -7,22 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  checkout={
-    orderItem:[],
-    coupon:"",
-    shipInf:{
-      firstName:"John",
+  order={
+    products:[],
+    shipInfo:{
+      firstName:"",
       lastName:"",
       phoneNo:"",
       email:"",
       address:"",
+      district:"",
+      city: "",
       note:""
     }
+  }
+ 
+
+  checkout():void{
+    alert(JSON.stringify(this.order));
   }
   constructor() { }
 
   ngOnInit() {
-    this.checkout.shipInf.firstName = "Emma";
   }
 
 }

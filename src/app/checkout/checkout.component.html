@@ -18,7 +18,7 @@
                           </a>
                         </h4>
                       </div>
-                      <div id="collapseOne" class="panel-collapse collapse in">
+                      <div id="collapseOne" class="panel-collapse collapse">
                         <div class="panel-body">
                           <input type="text" placeholder="Coupon Code" class="aa-coupon-code">
                           <input type="submit" value="Apply Coupon" class="aa-browse-btn">
@@ -34,13 +34,13 @@
                           </a>
                         </h4>
                       </div>
-                      <div id="collapseFour" class="panel-collapse collapse">
+                      <div id="collapseFour" class="panel-collapse collapse in">
                         <div class="panel-body">
                           <div class="row">
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
                                 <!--First Name-->
-                                <input type="text" placeholder="First Name*" [(ngModel)]="checkout.shipInf.firstName" 
+                                <input type="text" placeholder="First Name*" [(ngModel)]="order.shipInfo.fisrtName"
                                   name="firstName" #firstName="ngModel" required>
                               </div>
                               <!-- validate First Name -->
@@ -51,8 +51,8 @@
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
                                 <!--Last Name-->
-                                <input type="text" placeholder="Last Name*" ngModel
-                                name="lastName" #lastName="ngModel">
+                                <input type="text" placeholder="Last Name*" [(ngModel)]="order.shipInfo.lastName"
+                                name="lastName" #lastName="ngModel" required>
                               </div>
                               <!-- validate Last Name -->
                               <div class="col alert text-danger" role="alert" *ngIf="lastName.touched&&lastName.invalid">
@@ -64,13 +64,26 @@
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
                                 <!-- Email -->
-                                <input type="email" placeholder="Email">
+                                <input type="email" placeholder="Email" [(ngModel)]="order.shipInfo.email" 
+                                  name="email" #email="ngModel" email>
+                              </div>
+                              <!-- validate Email -->
+                              <div class="col alert text-danger" role="alert" *ngIf="email.invalid">
+                                Wrong Email!
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
                                 <!-- Phone number -->
-                                <input type="tel" placeholder="Phone*">
+                                <input type="tel" placeholder="Phone*" [(ngModel)]="order.shipInfo.phoneNo"
+                                 name="phone" #phone="ngModel" pattern="[0-9]+" required>
+                              </div>
+                              <!-- validate phone number -->
+                              <div class="col alert text-danger" role="alert" *ngIf="phone.errors?.pattern">
+                                Phone number is wrong!
+                              </div>
+                              <div class="col alert text-danger" role="alert" *ngIf="phone.errors?.required && phone.touched">
+                                Phone number is required!
                               </div>
                             </div>
                           </div>
@@ -78,7 +91,12 @@
                             <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
                                 <!-- address -->
-                                <textarea cols="8" rows="3" placeholder="Address*"></textarea>
+                                <textarea cols="8" rows="3" placeholder="Address*" [(ngModel)]="order.shipInfo.address" name="address" #address="ngModel" required>
+                                </textarea>
+                              </div>
+                              <!-- validate address -->
+                              <div class="col alert text-danger" role="alert" *ngIf="address.errors?.required && address.touched">
+                                Address is required!
                               </div>
                             </div>
                           </div>
@@ -86,13 +104,21 @@
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
                                 <!-- district -->
-                                <input type="text" placeholder="District*">
+                                <input type="text" placeholder="District*" [(ngModel)]="order.shipInfo.district" name="district" #district="ngModel" required>
+                              </div>
+                              <!-- validate address -->
+                              <div class="col alert text-danger" role="alert" *ngIf="district.errors?.required && district.touched">
+                                District is required!
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
                                 <!-- City -->
-                                <input type="text" placeholder="City / Town*">
+                                <input type="text" placeholder="City / Town*" [(ngModel)]="order.shipInfo.city" name="city" #city="ngModel" required>
+                              </div>
+                              <!-- validate city -->
+                              <div class="col alert text-danger" role="alert" *ngIf="city.errors?.required && city.touched">
+                                City is required!
                               </div>
                             </div>
                           </div>
@@ -100,7 +126,7 @@
                             <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
                                 <!-- Note -->
-                                <textarea cols="8" rows="3" placeholder="Special Notes"></textarea>
+                                <textarea cols="8" rows="3" [(ngModel)]="order.shipInfo.note" placeholder="Special Notes"></textarea>
                               </div>
                             </div>
                           </div>
@@ -167,12 +193,17 @@
                   <h4>Payment Method</h4>
                   <div class="aa-payment-method">
                     <label for="cashdelivery">
-                      <input type="radio" id="cashdelivery" name="optionsRadios"> Cash on Delivery </label>
+                      <input type="radio" id="cashdelivery" name="optionsRadios" checked> Cash on Delivery </label>
                     <label for="paypal">
-                      <input type="radio" id="paypal" name="optionsRadios" checked> Via Paypal </label>
+                      <input type="radio" id="paypal" name="optionsRadios" > Via Paypal </label>
                     <img src="../../assets/img/paypal-checkout.jpg" border="0" alt="PayPal Acceptance Mark">
                     <!-- Submit button -->
-                    <input type="submit" value="Place Order" class="aa-browse-btn">
+                    <input type="submit" [disabled]="checkoutForm.invalid" [ngClass]="{disabled : checkoutForm.invalid}" 
+                      (click)="checkout()" value="Place Order" class="aa-browse-btn">
+                      <!-- validate form -->
+                    <div class="col alert text-danger" role="alert" *ngIf="checkoutForm.invalid">
+                      ** Required infomation isn't filled full !
+                    </div>
                   </div>
                 </div>
               </div>
